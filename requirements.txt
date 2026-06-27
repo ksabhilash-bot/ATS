@@ -1,0 +1,48 @@
+# Core AI
+langchain
+langchain-core
+langchain-community
+
+# Mistral AI
+langchain-mistralai
+mistralai
+
+# Environment Variables
+python-dotenv
+
+# Resume Parsing
+pypdf
+python-docx
+
+# Data Validation
+pydantic
+pydantic-settings
+
+# FastAPI Backend
+fastapi
+uvicorn[standard]
+
+# Database
+supabase
+postgrest
+
+# HTTP Clients
+httpx
+requests
+
+# Utilities
+python-multipart
+orjson
+
+# Logging & Monitoring
+loguru
+
+# Development
+ipython
+
+# Optional ATS / NLP Helpers
+rapidfuzz
+
+# Testing
+pytest
+pytest-asyncio

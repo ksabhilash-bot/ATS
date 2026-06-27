@@ -1,0 +1,10 @@
+.venv
+.env
+__pycache__
+_pycache_
+*.pdf
+.pdf
+.agents
+.pytest_cache
+resumeAbhi.pdf
+Abhilash_KS_Resume.pdf
