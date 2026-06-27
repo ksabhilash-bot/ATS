@@ -1,5 +1,5 @@
 from typing import Optional,List
-from pydantic import BaseModel
+from pydantic import BaseModel,Field, model_validator
 from enum import Enum
 
 class Skill(BaseModel):
@@ -36,8 +36,15 @@ class Experience(BaseModel):
     start_date: Optional[str] = None
     end_date: Optional[str] = None
     currently_working: bool = False
-    responsibilities: List[str] = []
-    skills_used: List[str] = []
+    responsibilities: List[str] = Field(default_factory=list)
+    skills_used: List[str] = Field(default_factory=list)
+    @model_validator(mode="before")
+    @classmethod
+    def coerce_nulls(cls, values):
+        for f in ("responsibilities", "skills_used"):
+            if values.get(f) is None:
+                values[f] = []
+        return values
 
 
 class Certification(BaseModel):
@@ -48,9 +55,15 @@ class Certification(BaseModel):
 class Project(BaseModel):
     title: str
     description: Optional[str] = None
-    technologies: List[str] = []
     outcome: Optional[str] = None
     url: Optional[str] = None
+    technologies: List[str] = Field(default_factory=list)
+    @model_validator(mode="before")
+    @classmethod
+    def coerce_nulls(cls, values):
+        if values.get("technologies") is None:
+            values["technologies"] = []
+        return values
 
 class Address(BaseModel):
     city:Optional[str] = None
@@ -71,17 +84,32 @@ class CandidateProfile(BaseModel):
     professional_summary: Optional[str] = None
     current_designation: Optional[str] = None
     candidate_type: Optional[str] = None
-    total_experience_years: float = 0
-    technical_skills: List[Skill] = []
-    soft_skills: List[Skill] = []
-    tools: List[Skill] = []
-    education: List[Education] = []
-    experience: List[Experience] = []
-    certifications: List[Certification] = []
-    projects: List[Project] = []
-    languages: List[str] = []
-    achievements: List[str] = []
-    keywords: List[str] = []
+    total_experience_years: float = Field(default=0.0)
+    technical_skills: List[Skill] = Field(default_factory=list)
+    soft_skills: List[Skill] = Field(default_factory=list)
+    tools: List[Skill] = Field(default_factory=list)
+    education: List[Education] = Field(default_factory=list)
+    experience: List[Experience] = Field(default_factory=list)
+    certifications: List[Certification] = Field(default_factory=list)
+    projects: List[Project] = Field(default_factory=list)
+    languages: List[str] = Field(default_factory=list)
+    achievements: List[str] = Field(default_factory=list)
+    keywords: List[str] = Field(default_factory=list)
+    @model_validator(mode="before")
+    @classmethod
+    def coerce_nulls(cls, values):
+        # LLM returns explicit null for missing fields — convert to safe defaults
+        list_fields = (
+            "technical_skills", "soft_skills", "tools", "education",
+            "experience", "certifications", "projects",
+            "languages", "achievements", "keywords",
+        )
+        for field in list_fields:
+            if values.get(field) is None:
+                values[field] = []
+        if values.get("total_experience_years") is None:
+            values["total_experience_years"] = 0.0
+        return values
 
 
 

@@ -1,19 +1,20 @@
 import asyncio
-
 from Reader.DocReader import extract_resume_text
 from Services.candidateResumeLLMService import aiResumeParser
-from Config.supabase_config import supabase_client
+from utils.section_classifier import classify_sections, sections_to_prompt_text
 from rich import print
-from utils.text_cleaner import clean_resume_text
 
 async def main():
+    text = extract_resume_text("Abhilash_KS_Resume.pdf")
 
-    text = extract_resume_text("resumeAbhi.pdf")
-    print("text:",text)
+    # See exactly what sections were detected (great for debugging)
+    blocks = classify_sections(text)
+    print("\n[bold cyan]Detected Sections:[/bold cyan]")
+    for b in blocks:
+        print(f"  [{b.confidence}] {b.section.value.upper()} — {len(b.content)} chars")
+
     result = await aiResumeParser(text)
     candidate = result.model_dump(mode="json")
-    print("\nresult:",candidate)
-
-    
+    print("\n[bold green]Parsed Result:[/bold green]", candidate)
 
 asyncio.run(main())
