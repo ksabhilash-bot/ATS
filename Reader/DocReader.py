@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from docx import Document
-from pypdf import PdfReader
+import pdfplumber
 
 from utils.text_cleaner import clean_resume_text
 
@@ -50,19 +50,33 @@ def extract_resume_text(file: str | Path) -> str:
 
 def extract_pdf_text(file: str | Path) -> str:
     """
-    Extract text from a PDF resume.
+    Extract text from a PDF resume using pdfplumber.
+    
+    Uses layout=True to respect visual reading order — critical for
+    two-column resume layouts where sidebar content (contact, summary)
+    would otherwise appear mid-document with pypdf.
     """
     try:
-        reader = PdfReader(str(file))
-
         page_text = []
 
-        for page in reader.pages:
-            page_text.append(page.extract_text() or "")
+        with pdfplumber.open(str(file)) as pdf:
+            for page in pdf.pages:
 
-        text = "\n".join(
-            text for text in page_text if text
-        ).strip()
+                # First attempt: layout-aware extraction (handles columns)
+                text = page.extract_text(
+                    x_tolerance=3,
+                    y_tolerance=3,
+                    layout=True
+                )
+
+                # Fallback: standard extraction if layout mode returns nothing
+                if not text or not text.strip():
+                    text = page.extract_text(x_tolerance=3, y_tolerance=3)
+
+                if text and text.strip():
+                    page_text.append(text)
+
+        text = "\n".join(page_text).strip()
 
         return clean_resume_text(text)
 

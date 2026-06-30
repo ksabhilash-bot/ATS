@@ -1,0 +1,42 @@
+[
+  {
+    "id": "resume_001_clean_headings",
+    "raw_text": "Jane Doe\njane.doe@email.com | +91-9876543210 | linkedin.com/in/janedoe | github.com/janedoe\n\nSummary\nResults-driven software engineer with 3 years of experience building scalable web applications. Passionate about clean code and developer tooling.\n\nSkills\nPython, FastAPI, Django, React, Node.js, PostgreSQL, MongoDB, Docker, AWS, Git\n\nWork Experience\nSoftware Engineer, Acme Corp, Jan 2022 - Present\nLed migration of monolith to microservices, reducing deployment time by 40%. Built internal CI/CD tooling used by 5 engineering teams.\nJunior Developer, Beta Solutions, Jun 2020 - Dec 2021\nDeveloped REST APIs for the customer portal and fixed over 50 production bugs.\n\nEducation\nBachelor of Technology in Computer Science, ABC University, 2016-2020, CGPA 8.4\n\nProjects\nRAG Chatbot - Built with LangChain, ChromaDB, and Mistral, deployed on Render with Docker. Indexes internal docs and answers employee questions.\nExpense Tracker - Full-stack app using Next.js and PostgreSQL with JWT auth.\n\nCertifications\nAWS Certified Solutions Architect - Associate, issued 2023\nMongoDB Certified Developer, issued 2022\n\nAwards\nWinner, Smart India Hackathon 2019, ranked 1st among 500 teams\n\nLanguages\nEnglish: Native, Hindi: Fluent, Spanish: Intermediate\n\nVolunteer Experience\nVolunteered at local NGO organizing community coding workshops for underprivileged students.",
+    "ground_truth": [
+      {"section": "contact", "text": "Jane Doe jane.doe@email.com +91-9876543210 linkedin.com/in/janedoe github.com/janedoe"},
+      {"section": "summary", "text": "Results-driven software engineer with 3 years of experience building scalable web applications. Passionate about clean code and developer tooling."},
+      {"section": "skills", "text": "Python, FastAPI, Django, React, Node.js, PostgreSQL, MongoDB, Docker, AWS, Git"},
+      {"section": "work_experience", "text": "Software Engineer, Acme Corp, Jan 2022 - Present Led migration of monolith to microservices, reducing deployment time by 40%. Built internal CI/CD tooling used by 5 engineering teams. Junior Developer, Beta Solutions, Jun 2020 - Dec 2021 Developed REST APIs for the customer portal and fixed over 50 production bugs."},
+      {"section": "education", "text": "Bachelor of Technology in Computer Science, ABC University, 2016-2020, CGPA 8.4"},
+      {"section": "projects", "text": "RAG Chatbot - Built with LangChain, ChromaDB, and Mistral, deployed on Render with Docker. Indexes internal docs and answers employee questions. Expense Tracker - Full-stack app using Next.js and PostgreSQL with JWT auth."},
+      {"section": "certifications", "text": "AWS Certified Solutions Architect - Associate, issued 2023 MongoDB Certified Developer, issued 2022"},
+      {"section": "awards", "text": "Winner, Smart India Hackathon 2019, ranked 1st among 500 teams"},
+      {"section": "languages", "text": "English: Native, Hindi: Fluent, Spanish: Intermediate"},
+      {"section": "volunteer", "text": "Volunteered at local NGO organizing community coding workshops for underprivileged students."}
+    ]
+  },
+  {
+    "id": "resume_002_unusual_headings",
+    "raw_text": "John Smith\njohn.smith@email.com | +1-555-0199 | linkedin.com/in/johnsmith\n\nWho I Am\nFull-stack developer who loves shipping fast and breaking nothing. Six years building products people actually use.\n\nMy Toolbox\nTypeScript, Next.js, Tailwind, Express, MySQL, Redis, Kubernetes, GCP\n\nWhere I've Worked\nTech Lead, Globex Inc, Mar 2021 - Present\nOwn the architecture for a payments platform processing 2M transactions a month.\nBackend Engineer, Initech, Jul 2018 - Feb 2021\nBuilt the notifications service handling 10M+ daily events.\n\nSchooling\nB.Sc Computer Engineering, State University, 2014-2018\n\nStuff I Built\nDevTools Extension - Chrome extension with 50k+ installs for inspecting GraphQL traffic.\nHome Server Dashboard - Self-hosted monitoring stack using Grafana and Prometheus.\n\nPapers I Hold\nGoogle Cloud Professional Architect, 2022\nCertified Kubernetes Administrator, 2021",
+    "ground_truth": [
+      {"section": "contact", "text": "John Smith john.smith@email.com +1-555-0199 linkedin.com/in/johnsmith"},
+      {"section": "summary", "text": "Full-stack developer who loves shipping fast and breaking nothing. Six years building products people actually use."},
+      {"section": "skills", "text": "TypeScript, Next.js, Tailwind, Express, MySQL, Redis, Kubernetes, GCP"},
+      {"section": "work_experience", "text": "Tech Lead, Globex Inc, Mar 2021 - Present Own the architecture for a payments platform processing 2M transactions a month. Backend Engineer, Initech, Jul 2018 - Feb 2021 Built the notifications service handling 10M+ daily events."},
+      {"section": "education", "text": "B.Sc Computer Engineering, State University, 2014-2018"},
+      {"section": "projects", "text": "DevTools Extension - Chrome extension with 50k+ installs for inspecting GraphQL traffic. Home Server Dashboard - Self-hosted monitoring stack using Grafana and Prometheus."},
+      {"section": "certifications", "text": "Google Cloud Professional Architect, 2022 Certified Kubernetes Administrator, 2021"}
+    ]
+  },
+  {
+    "id": "resume_003_table_skills_no_headings",
+    "raw_text": "Priya Nair\npriya.nair@email.com | +91-9123456780\n\nPython | FastAPI | LangChain | ChromaDB\nDocker | PostgreSQL | React | AWS\n\nB.Tech Computer Science, MIT Manipal, 2019-2023, CGPA 9.0\n\nML Engineer, DataWorks, 2023-Present\nBuilt and deployed RAG pipelines for enterprise document search, reducing query latency by 60%.\n\nResume Screener - End-to-end ATS resume parser using FastAPI, Mistral, and LangChain.\nPortfolio Site - Personal site built with Next.js and deployed on Vercel.",
+    "ground_truth": [
+      {"section": "contact", "text": "Priya Nair priya.nair@email.com +91-9123456780"},
+      {"section": "skills", "text": "Python | FastAPI | LangChain | ChromaDB Docker | PostgreSQL | React | AWS"},
+      {"section": "education", "text": "B.Tech Computer Science, MIT Manipal, 2019-2023, CGPA 9.0"},
+      {"section": "work_experience", "text": "ML Engineer, DataWorks, 2023-Present Built and deployed RAG pipelines for enterprise document search, reducing query latency by 60%."},
+      {"section": "projects", "text": "Resume Screener - End-to-end ATS resume parser using FastAPI, Mistral, and LangChain. Portfolio Site - Personal site built with Next.js and deployed on Vercel."}
+    ]
+  }
+]

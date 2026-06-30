@@ -1,0 +1,84 @@
+{
+  "sections": {
+    "awards": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "certifications": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.667,
+      "support": 2
+    },
+    "contact": {
+      "precision": 0.5,
+      "recall": 0.333,
+      "f1": 0.4,
+      "support": 3
+    },
+    "education": {
+      "precision": 0.5,
+      "recall": 0.333,
+      "f1": 0.4,
+      "support": 3
+    },
+    "languages": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "projects": {
+      "precision": 1.0,
+      "recall": 0.333,
+      "f1": 0.5,
+      "support": 3
+    },
+    "skills": {
+      "precision": 1.0,
+      "recall": 0.333,
+      "f1": 0.5,
+      "support": 3
+    },
+    "summary": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.667,
+      "support": 2
+    },
+    "volunteer": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "work_experience": {
+      "precision": 1.0,
+      "recall": 0.667,
+      "f1": 0.8,
+      "support": 3
+    }
+  },
+  "tiers": {
+    "nlp": {
+      "blocks": 2,
+      "accuracy": 1.0
+    },
+    "rule": {
+      "blocks": 10,
+      "accuracy": 0.9
+    },
+    "llm": {
+      "blocks": 1,
+      "accuracy": 0.0
+    }
+  },
+  "confusion_pairs": {
+    "projects -> predicted education": 1,
+    "projects -> predicted contact": 1
+  },
+  "overall_accuracy": 0.846,
+  "total_blocks": 13
+}

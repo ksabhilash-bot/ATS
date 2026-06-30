@@ -1,7 +1,8 @@
 from langchain_mistralai import ChatMistralAI
 from dotenv import load_dotenv
 from Dtos.CandidateDTOs import CandidateProfile
-from utils.section_classifier import classify_sections, sections_to_prompt_text
+from utils.hybrid_section_classifier import classify_sections_hybrid
+from utils.section_classifier import sections_to_prompt_text
 import os
 
 load_dotenv()
@@ -21,8 +22,8 @@ Be precise. If a field is not present, return null. Do not infer or hallucinate 
 
 
 async def aiResumeParser(text: str) -> CandidateProfile:
-    # Classify sections first
-    blocks = classify_sections(text)
+    # Classify sections first (rule -> NLP -> LLM hybrid pipeline)
+    blocks = await classify_sections_hybrid(text)
     structured_text = sections_to_prompt_text(blocks)
 
     # Now LLM receives labeled sections, not raw blob
